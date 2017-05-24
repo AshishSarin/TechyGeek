@@ -14,7 +14,8 @@
             android:label="@string/title_activity_techy_geek"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".HomeActivity">
+        <activity android:name=".HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
