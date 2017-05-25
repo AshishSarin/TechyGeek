@@ -21,6 +21,5 @@ public class HomeActivity extends TechyGeekActivity
         // Settingup the action bar
         getSupportActionBar().setTitle("Techy Geek");
 
-
     }
 }
