@@ -5,6 +5,8 @@ import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.sareen.squarelabs.techygeek.ui.NewsListFragment;
+
 public class HomeActivity extends TechyGeekActivity
 {
     @Override
@@ -20,6 +22,12 @@ public class HomeActivity extends TechyGeekActivity
 
         // Settingup the action bar
         getSupportActionBar().setTitle("Techy Geek");
+
+        // show news list fragment
+        NewsListFragment newsListFragment = NewsListFragment.getInstance();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.home_activity_view, newsListFragment)
+                .commit();
 
     }
 }
