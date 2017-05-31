@@ -3,6 +3,8 @@ package com.sareen.squarelabs.techygeek.adapters;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import com.squareup.picasso.Picasso;
 public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsViewHolder>
 {
     private Context mContext;
+    private int lastPosition = -1;
 
     public NewsAdapter(Class<Post> modelClass, int modelLayout, Class<NewsViewHolder> viewHolderClass, Query ref, Context context)
     {
@@ -40,6 +43,21 @@ public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsV
                 .load(mainImageUrl)
                 .into(viewHolder.mTitleImageView);
 
+
+        // adding animation to the view
+        setAnimation(viewHolder.itemView, position);
+
+    }
+
+    private void setAnimation(View itemView, int position)
+    {
+        // if the bound view wasn't previously displayed on screen, it's animated.
+        if(position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.list_item_right_to_left);
+            itemView.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder
