@@ -60,6 +60,14 @@ public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsV
         }
     }
 
+    @Override
+    public void onViewDetachedFromWindow(NewsViewHolder holder)
+    {
+        super.onViewDetachedFromWindow(holder);
+        holder.clearAnimation();
+
+    }
+
     public static class NewsViewHolder extends RecyclerView.ViewHolder
     {
 
@@ -73,6 +81,11 @@ public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsV
             this.itemView = itemView;
             this.mTitleImageView = (ImageView)itemView.findViewById(R.id.title_image);
             this.mTitleTextView = (TextView) itemView.findViewById(R.id.title_text);
+        }
+
+        public void clearAnimation()
+        {
+            itemView.clearAnimation();
         }
     }
 }
