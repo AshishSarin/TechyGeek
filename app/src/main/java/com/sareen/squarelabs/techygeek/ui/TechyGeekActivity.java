@@ -1,4 +1,4 @@
-package com.sareen.squarelabs.techygeek;
+package com.sareen.squarelabs.techygeek.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.sareen.squarelabs.techygeek.R;
 
 public class TechyGeekActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
