@@ -1,11 +1,11 @@
-package com.sareen.squarelabs.techygeek;
+package com.sareen.squarelabs.techygeek.ui;
 
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.sareen.squarelabs.techygeek.ui.NewsListFragment;
+import com.sareen.squarelabs.techygeek.R;
 
 public class HomeActivity extends TechyGeekActivity
 {
