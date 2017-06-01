@@ -8,9 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sareen.squarelabs.techygeek.R;
 import com.sareen.squarelabs.techygeek.adapters.NewsAdapter;
 import com.sareen.squarelabs.techygeek.model.Post;
@@ -25,6 +29,7 @@ public class NewsListFragment extends Fragment
     private RecyclerView.LayoutManager mLayoutManager;
     private NewsAdapter mNewsAdapter;
     private DatabaseReference mDatabaseRef;
+    private ProgressBar mProgressBar;
 
 
     public NewsListFragment()
@@ -50,6 +55,25 @@ public class NewsListFragment extends Fragment
     {
         // Inflate the layout for this fragment
         View rootView =  inflater.inflate(R.layout.fragment_new_list, container, false);
+
+        // Setting up the pogress bar
+        mProgressBar = (ProgressBar)rootView.findViewById(R.id.news_load_progress);
+        mProgressBar.setVisibility(View.VISIBLE);
+
+        mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                mProgressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+
+            }
+        });
 
         // Setting up recycler view for news list
         mNewsListView = (RecyclerView)rootView.findViewById(R.id.list_news);
