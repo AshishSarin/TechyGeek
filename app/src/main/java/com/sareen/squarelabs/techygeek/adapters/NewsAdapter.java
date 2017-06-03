@@ -1,19 +1,20 @@
 package com.sareen.squarelabs.techygeek.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.Query;
 import com.sareen.squarelabs.techygeek.R;
 import com.sareen.squarelabs.techygeek.clickListeners.NewsListItemClickListener;
 import com.sareen.squarelabs.techygeek.model.Post;
+import com.sareen.squarelabs.techygeek.ui.NewsDetailActivity;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -87,7 +88,10 @@ public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsV
     @Override
     public void onItemClick(View view, int position)
     {
-        Toast.makeText(mContext, "Position: " + position, Toast.LENGTH_LONG).show();
+        Post post = getItem(position);
+        Intent detailIntent = new Intent(mContext, NewsDetailActivity.class);
+        detailIntent.putExtra("detailText", post.getTitle());
+        mContext.startActivity(detailIntent);
     }
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder

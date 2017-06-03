@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.sareen.squarelabs.techygeek.ui.NewsDetailActivity">
 
+
+    <TextView
+        android:id="@+id/detail_text"
+        android:text="HOHOHO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
 </android.support.constraint.ConstraintLayout>
