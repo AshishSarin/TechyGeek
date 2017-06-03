@@ -24,6 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
+        <View
+            android:background="@drawable/title_image_scrim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
 
         <TextView
             android:id="@+id/title_text"
