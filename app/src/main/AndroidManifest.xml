@@ -12,7 +12,7 @@
         <activity
             android:name=".ui.TechyGeekActivity"
             android:label="@string/title_activity_techy_geek"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".ui.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -22,7 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.NewsDetailActivity"></activity>
+        <activity android:name=".ui.NewsDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
