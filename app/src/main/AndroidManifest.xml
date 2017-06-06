@@ -12,15 +12,32 @@
         <activity
             android:name=".ui.TechyGeekActivity"
             android:label="@string/title_activity_techy_geek"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".ui.HomeActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.HomeActivity"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.NewsDetailActivity"
+            android:parentActivityName=".ui.HomeActivity"/>
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".ui.HomeActivity"/>
+
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".ui.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sareen.squarelabs.techygeek.ui.HomeActivity"/>
         </activity>
     </application>
 

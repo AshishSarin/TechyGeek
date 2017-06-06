@@ -1,6 +1,7 @@
 package com.sareen.squarelabs.techygeek.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
@@ -11,26 +12,31 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.Query;
 import com.sareen.squarelabs.techygeek.R;
+import com.sareen.squarelabs.techygeek.clickListeners.NewsListItemClickListener;
 import com.sareen.squarelabs.techygeek.model.Post;
+import com.sareen.squarelabs.techygeek.ui.NewsDetailActivity;
 import com.squareup.picasso.Picasso;
 
 /**
  * Created by Ashish on 28-05-2017.
  */
 
-public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsViewHolder>
+public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsViewHolder> implements
+        NewsListItemClickListener
 {
     private Context mContext;
     private int lastPosition = -1;
+    private NewsListItemClickListener itemClickListener;
 
     public NewsAdapter(Class<Post> modelClass, int modelLayout, Class<NewsViewHolder> viewHolderClass, Query ref, Context context)
     {
         super(modelClass, modelLayout, viewHolderClass, ref);
         this.mContext = context;
+        itemClickListener = this;
     }
 
     @Override
-    protected void populateViewHolder(NewsViewHolder viewHolder, Post model, int position)
+    protected void populateViewHolder(NewsViewHolder viewHolder, Post model, final int position)
     {
         // getting data from model
         String title = model.getTitle();
@@ -46,6 +52,17 @@ public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsV
 
         // adding animation to the view
         setAnimation(viewHolder.itemView, position);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                itemClickListener.onItemClick(v, position);
+            }
+        });
+
+
 
     }
 
@@ -66,6 +83,15 @@ public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsV
         super.onViewDetachedFromWindow(holder);
         holder.clearAnimation();
 
+    }
+
+    @Override
+    public void onItemClick(View view, int position)
+    {
+        Post post = getItem(position);
+        Intent detailIntent = new Intent(mContext, NewsDetailActivity.class);
+        detailIntent.putExtra("detailText", post.getTitle());
+        mContext.startActivity(detailIntent);
     }
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder
