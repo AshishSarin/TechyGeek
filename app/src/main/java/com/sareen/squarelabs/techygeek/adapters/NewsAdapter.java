@@ -2,6 +2,7 @@ package com.sareen.squarelabs.techygeek.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
@@ -15,6 +16,7 @@ import com.sareen.squarelabs.techygeek.R;
 import com.sareen.squarelabs.techygeek.clickListeners.NewsListItemClickListener;
 import com.sareen.squarelabs.techygeek.model.Post;
 import com.sareen.squarelabs.techygeek.ui.NewsDetailActivity;
+import com.sareen.squarelabs.techygeek.utilities.Utility;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -90,13 +92,17 @@ public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsV
     {
         Post post = getItem(position);
         Intent detailIntent = new Intent(mContext, NewsDetailActivity.class);
-        detailIntent.putExtra("detailText", post.getTitle());
+        Bundle detailBundle = new Bundle();
+        detailBundle.putString(Utility.DETAIL_TTITLE, post.getTitle());
+        detailBundle.putString(Utility.DETAIL_TEXT, post.getText());
+        detailBundle.putString(Utility.DETAIL_POSTID, post.getPostId());
+        detailBundle.putString(Utility.DETAIL_IMAGE, post.getMainImageUrl());
+        detailIntent.putExtras(detailBundle);
         mContext.startActivity(detailIntent);
     }
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder
     {
-
         View itemView;
         TextView mTitleTextView;
         ImageView mTitleImageView;
