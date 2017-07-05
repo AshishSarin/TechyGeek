@@ -2,6 +2,8 @@ package com.sareen.squarelabs.techygeek.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,5 +48,11 @@ public class NewsDetailActivity extends AppCompatActivity
 
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.detail, menu);
+        return true;
+    }
 }
