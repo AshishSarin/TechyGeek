@@ -39,6 +39,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sareen.squarelabs.techygeek.ui.HomeActivity"/>
         </activity>
+
+        <provider
+            android:authorities="com.sareen.squarelabs.techygeek.provider"
+            android:name=".data.TechyGeekProvider"/>
     </application>
 
 </manifest>
