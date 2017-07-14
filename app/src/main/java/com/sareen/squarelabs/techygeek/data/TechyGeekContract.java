@@ -42,7 +42,7 @@ public class TechyGeekContract
         public static final String COLUMN_POST_IMAGE = "post_image";
 
         // Column with content of post
-        public static final String COLUMN_POST_TEXT = "post_title";
+        public static final String COLUMN_POST_TEXT = "post_text";
 
         // Declaring and defining uris for content provider
         // content_uri is defined as
