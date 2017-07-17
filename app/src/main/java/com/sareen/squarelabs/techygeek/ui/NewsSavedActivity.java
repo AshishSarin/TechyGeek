@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 
 import com.sareen.squarelabs.techygeek.R;
 import com.sareen.squarelabs.techygeek.adapters.SavedPostsAdapter;
@@ -20,6 +21,7 @@ public class NewsSavedActivity extends AppCompatActivity
     implements LoaderManager.LoaderCallbacks<Cursor>
 {
 
+    private ProgressBar mSavedProgressBar;
     private RecyclerView mSavedListView;
     private RecyclerView.LayoutManager mSaveLayoutManager;
     private SavedPostsAdapter mSavedPostsAdapter;
@@ -43,6 +45,8 @@ public class NewsSavedActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_saved);
 
+        mSavedProgressBar = (ProgressBar)findViewById(R.id.saved_load_progress);
+
         // Setting up recylerview for saved post list
         mSavedListView = (RecyclerView)findViewById(R.id.list_saved_news);
         mSaveLayoutManager = new LinearLayoutManager(this);
@@ -61,6 +65,7 @@ public class NewsSavedActivity extends AppCompatActivity
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args)
     {
+        mSavedProgressBar.setVisibility(View.VISIBLE);
         return new CursorLoader
                 (
                         this,
@@ -75,6 +80,7 @@ public class NewsSavedActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data)
     {
+        mSavedProgressBar.setVisibility(View.GONE);
         mSavedPostsAdapter.swapCursor(data);
 
     }
