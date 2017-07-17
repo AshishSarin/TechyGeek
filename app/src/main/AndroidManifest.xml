@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.sareen.squarelabs.techygeek">
+    package="com.sareen.squarelabs.techygeek">
 
     <application
         android:allowBackup="true"
@@ -12,24 +12,24 @@
         <activity
             android:name=".ui.TechyGeekActivity"
             android:label="@string/title_activity_techy_geek"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.HomeActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ui.NewsDetailActivity"
-            android:parentActivityName=".ui.HomeActivity"/>
+            android:parentActivityName=".ui.HomeActivity" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ui.HomeActivity"/>
+            android:value=".ui.HomeActivity" />
 
         <activity
             android:name=".ui.SettingsActivity"
@@ -37,12 +37,21 @@
             android:parentActivityName=".ui.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sareen.squarelabs.techygeek.ui.HomeActivity"/>
+                android:value="com.sareen.squarelabs.techygeek.ui.HomeActivity" />
+        </activity>
+
+        <activity android:name=".ui.NewsSavedActivity"
+            android:label="Downloads">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.HomeActivity"/>
         </activity>
 
         <provider
-            android:authorities="com.sareen.squarelabs.techygeek.provider"
-            android:name=".data.TechyGeekProvider"/>
+            android:name=".data.TechyGeekProvider"
+            android:authorities="com.sareen.squarelabs.techygeek.provider" />
+
+
     </application>
 
 </manifest>
