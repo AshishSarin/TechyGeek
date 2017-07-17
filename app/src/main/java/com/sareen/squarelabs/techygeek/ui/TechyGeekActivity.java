@@ -98,9 +98,20 @@ public class TechyGeekActivity extends AppCompatActivity
 
         if (id == R.id.nav_settings)
         {
-            // Handle the camera action
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
             startActivity(settingsIntent);
+        }
+        else if(id == R.id.nav_saved_news)
+        {
+            // Open Saved Activity
+            Intent savedIntent = new Intent(this, NewsSavedActivity.class);
+            startActivity(savedIntent);
+        }
+        else if(id == R.id.nav_home)
+        {
+            // Open Home activity
+            Intent homeIntent = new Intent(this, HomeActivity.class);
+            startActivity(homeIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
