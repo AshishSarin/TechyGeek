@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sareen.squarelabs.techygeek.R;
 import com.sareen.squarelabs.techygeek.data.TechyGeekContract;
@@ -85,6 +86,8 @@ public class NewsDetailActivity extends AppCompatActivity
         contentValues.put(SavedPostsEntry.COLUMN_POST_TEXT, post_text);
         contentValues.put(SavedPostsEntry.COLUMN_POST_IMAGE, post_image_url);
         getContentResolver().insert(SavedPostsEntry.CONTENT_URI, contentValues);
+        Toast.makeText(this, "Article saved in Downloads", Toast.LENGTH_SHORT)
+                .show();
     }
 
     @Override
