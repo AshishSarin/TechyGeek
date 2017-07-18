@@ -31,6 +31,7 @@ public class NewsSavedActivity extends AppCompatActivity
     private String[] saveListProjection =
             {
                     SavedPostsEntry._ID,
+                    SavedPostsEntry.COLUMN_POST_ID,
                     SavedPostsEntry.COLUMN_POST_TITLE,
                     SavedPostsEntry.COLUMN_POST_IMAGE,
                     SavedPostsEntry.COLUMN_POST_TEXT
@@ -47,7 +48,7 @@ public class NewsSavedActivity extends AppCompatActivity
 
         mSavedProgressBar = (ProgressBar)findViewById(R.id.saved_load_progress);
 
-        // Setting up recylerview for saved post list
+        // Setting up recycler view for saved post list
         mSavedListView = (RecyclerView)findViewById(R.id.list_saved_news);
         mSaveLayoutManager = new LinearLayoutManager(this);
         mSavedListView.setLayoutManager(mSaveLayoutManager);
