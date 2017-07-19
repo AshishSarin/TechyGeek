@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sareen.squarelabs.techygeek.R;
 import com.sareen.squarelabs.techygeek.clickListeners.NewsListItemClickListener;
@@ -40,10 +41,11 @@ public class SavedPostsAdapter extends CursorRecyclerAdapter<SavedPostsAdapter.I
     @Override
     public void onBindViewHolder(ItemViewHolder holder, Cursor cursor)
     {
-        if(cursor.moveToFirst())
-        {
+
             String title = cursor.getString(cursor.getColumnIndex
                     (SavedPostsEntry.COLUMN_POST_TITLE));
+
+            Toast.makeText(mContext, title, Toast.LENGTH_SHORT).show();
             String mainImageUrl = cursor.getString(cursor.getColumnIndex
                     (SavedPostsEntry.COLUMN_POST_IMAGE));
             holder.mTitleView.setText(title);
@@ -65,7 +67,7 @@ public class SavedPostsAdapter extends CursorRecyclerAdapter<SavedPostsAdapter.I
                     itemClickListener.onSaveItemClick(postObj);
                 }
             });
-        }
+
     }
 
     @Override
