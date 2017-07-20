@@ -13,8 +13,11 @@ public class Utility
     public static final String DETAIL_IMAGE = "detailImage";
 
 
-    // Constant for determining activity which calle detail activity
+    // Constant for determining activity which call detail activity
     public static final String DETAIL_CALLING_ACTIVITY = "calling_activity";
 
+
+    public static final int HOME_ACTIVITY_CALLING = 122;
+    public static final int SAVE_ACTIVITY_CALLING = 124;
 
 }

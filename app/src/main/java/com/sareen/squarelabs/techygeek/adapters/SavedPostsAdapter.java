@@ -87,6 +87,7 @@ public class SavedPostsAdapter extends CursorRecyclerAdapter<SavedPostsAdapter.I
         detailBundle.putString(Utility.DETAIL_IMAGE, post.getMainImageUrl());
         detailBundle.putString(Utility.DETAIL_TTITLE, post.getTitle());
         detailBundle.putString(Utility.DETAIL_TEXT, post.getText());
+        detailBundle.putInt(Utility.DETAIL_CALLING_ACTIVITY, Utility.SAVE_ACTIVITY_CALLING);
         detailIntent.putExtras(detailBundle);
         mContext.startActivity(detailIntent);
     }

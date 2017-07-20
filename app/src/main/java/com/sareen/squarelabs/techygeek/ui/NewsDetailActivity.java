@@ -11,15 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sareen.squarelabs.techygeek.R;
-import com.sareen.squarelabs.techygeek.data.TechyGeekContract;
 import com.sareen.squarelabs.techygeek.utilities.Utility;
 import com.squareup.picasso.Picasso;
 import com.sareen.squarelabs.techygeek.data.TechyGeekContract.SavedPostsEntry;
 
 public class NewsDetailActivity extends AppCompatActivity
 {
-
-    private int calling_code;
     private TextView detailTitle;
     private TextView detailText;
     private ImageView detailImage;
@@ -28,6 +25,9 @@ public class NewsDetailActivity extends AppCompatActivity
     private String post_text;
     private String post_image_url;
     private String post_id;
+
+    private boolean isSaved;
+    private int calling_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,6 +41,7 @@ public class NewsDetailActivity extends AppCompatActivity
         post_text = detailBundle.getString(Utility.DETAIL_TEXT);
         post_image_url = detailBundle.getString(Utility.DETAIL_IMAGE);
         post_id = detailBundle.getString(Utility.DETAIL_POSTID);
+        calling_code = detailBundle.getInt(Utility.DETAIL_CALLING_ACTIVITY);
 
         detailImage = (ImageView)findViewById(R.id.detail_image);
         detailText = (TextView)findViewById(R.id.detail_text);
@@ -53,9 +54,26 @@ public class NewsDetailActivity extends AppCompatActivity
                 .load(post_image_url)
                 .into(detailImage);
 
+        // initialize the save option in menu
+        initSaveOption();
 
 
+    }
 
+    private void initSaveOption()
+    {
+        // Keeping this flag false, to show save option in menu
+        isSaved = false;
+
+
+        if(calling_code == Utility.HOME_ACTIVITY_CALLING)
+        {
+            isSaved = false;
+        }
+        else
+        {
+            isSaved = true;
+        }
     }
 
     @Override
@@ -79,15 +97,40 @@ public class NewsDetailActivity extends AppCompatActivity
 
     private void savePost()
     {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(SavedPostsEntry.COLUMN_POST_ID, post_id);
-        contentValues.put(SavedPostsEntry.COLUMN_POST_TITLE, post_title);
-        contentValues.put(SavedPostsEntry.COLUMN_POST_TEXT, post_text);
-        contentValues.put(SavedPostsEntry.COLUMN_POST_TEXT, post_text);
-        contentValues.put(SavedPostsEntry.COLUMN_POST_IMAGE, post_image_url);
-        getContentResolver().insert(SavedPostsEntry.CONTENT_URI, contentValues);
-        Toast.makeText(this, "Article saved in Downloads", Toast.LENGTH_SHORT)
-                .show();
+        if(!isSaved)
+        {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(SavedPostsEntry.COLUMN_POST_ID, post_id);
+            contentValues.put(SavedPostsEntry.COLUMN_POST_TITLE, post_title);
+            contentValues.put(SavedPostsEntry.COLUMN_POST_TEXT, post_text);
+            contentValues.put(SavedPostsEntry.COLUMN_POST_TEXT, post_text);
+            contentValues.put(SavedPostsEntry.COLUMN_POST_IMAGE, post_image_url);
+            getContentResolver().insert(SavedPostsEntry.CONTENT_URI, contentValues);
+            Toast.makeText(this, "Article saved in Downloads", Toast.LENGTH_SHORT)
+                    .show();
+
+            // toggle save flag
+            isSaved = true;
+            invalidateOptionsMenu();
+        }
+        else
+        {
+            // TODO:
+            // Delete the post from database
+            // Close the detail activity
+            // show a snack bar in save activity with undo option of delete operation
+            // Show toast of already downloaded
+            deletePost();
+            Toast.makeText(this, "Article already downloaded", Toast.LENGTH_SHORT)
+                    .show();
+            invalidateOptionsMenu();
+
+        }
+    }
+
+    private void deletePost()
+    {
+
     }
 
     @Override
@@ -96,5 +139,20 @@ public class NewsDetailActivity extends AppCompatActivity
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.detail, menu);
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu)
+    {
+        MenuItem saveItem = menu.findItem(R.id.action_save);
+        if(!isSaved)
+        {
+            saveItem.setIcon(R.drawable.action_download_icon);
+        }
+        else
+        {
+            saveItem.setIcon(R.drawable.action_delete_icon);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 }

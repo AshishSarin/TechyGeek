@@ -97,6 +97,7 @@ public class NewsAdapter extends FirebaseRecyclerAdapter<Post, NewsAdapter.NewsV
         detailBundle.putString(Utility.DETAIL_TEXT, post.getText());
         detailBundle.putString(Utility.DETAIL_POSTID, post.getPostId());
         detailBundle.putString(Utility.DETAIL_IMAGE, post.getMainImageUrl());
+        detailBundle.putInt(Utility.DETAIL_CALLING_ACTIVITY, Utility.HOME_ACTIVITY_CALLING);
         detailIntent.putExtras(detailBundle);
         mContext.startActivity(detailIntent);
     }
