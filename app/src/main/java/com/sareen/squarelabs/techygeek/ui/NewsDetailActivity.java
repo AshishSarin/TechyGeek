@@ -67,14 +67,8 @@ public class NewsDetailActivity extends AppCompatActivity
         isSaved = false;
 
 
-        if(calling_code == Utility.HOME_ACTIVITY_CALLING)
-        {
-            isSaved = false;
-        }
-        else
-        {
-            isSaved = true;
-        }
+
+        isSaved = (calling_code == Utility.SAVE_ACTIVITY_CALLING);
     }
 
     @Override
@@ -121,6 +115,7 @@ public class NewsDetailActivity extends AppCompatActivity
             }
             // toggle save flag
             isSaved = true;
+
             invalidateOptionsMenu();
         }
         else
@@ -131,10 +126,30 @@ public class NewsDetailActivity extends AppCompatActivity
             // then close the detail activity
             // show a snack bar in save activity with undo option of delete operation
             // Show toast of already downloaded
-            deletePost();
-            Toast.makeText(this, "Article already downloaded", Toast.LENGTH_SHORT)
-                    .show();
-            invalidateOptionsMenu();
+            if(deletePost())
+            {
+                // Post is deleted
+                Toast.makeText(this, "Article removed from downloads", Toast.LENGTH_SHORT)
+                        .show();
+                if(calling_code == Utility.SAVE_ACTIVITY_CALLING)
+                {
+                    // if calling activity is save activity
+                    // Stop detail activity
+                    this.finish();
+                }
+                else
+                {
+                    isSaved = false;
+                    invalidateOptionsMenu();
+                }
+            }
+            else
+            {
+                // Post deletion was unsuccessful
+                Toast.makeText(this, "Not able to remove article from downloads",
+                        Toast.LENGTH_SHORT).show();
+            }
+
 
         }
     }
@@ -152,8 +167,15 @@ public class NewsDetailActivity extends AppCompatActivity
         return true;
     }
 
-    private void deletePost()
+    private boolean deletePost()
     {
+        int numDelete = getContentResolver().delete(SavedPostsEntry.CONTENT_URI,
+                SavedPostsEntry.COLUMN_POST_ID + "=?", new String[]{post_id});
+        if(numDelete != 0)
+        {
+            return true;
+        }
+        return false;
 
     }
 
