@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sareen.squarelabs.techygeek.R;
-import com.sareen.squarelabs.techygeek.clickListeners.NewsListItemClickListener;
 import com.sareen.squarelabs.techygeek.clickListeners.SaveNewsItemClickListener;
 import com.sareen.squarelabs.techygeek.data.TechyGeekContract.SavedPostsEntry;
 import com.sareen.squarelabs.techygeek.model.Post;
@@ -45,7 +44,6 @@ public class SavedPostsAdapter extends CursorRecyclerAdapter<SavedPostsAdapter.I
             String title = cursor.getString(cursor.getColumnIndex
                     (SavedPostsEntry.COLUMN_POST_TITLE));
 
-            Toast.makeText(mContext, title, Toast.LENGTH_SHORT).show();
             String mainImageUrl = cursor.getString(cursor.getColumnIndex
                     (SavedPostsEntry.COLUMN_POST_IMAGE));
             holder.mTitleView.setText(title);
@@ -89,6 +87,7 @@ public class SavedPostsAdapter extends CursorRecyclerAdapter<SavedPostsAdapter.I
         detailBundle.putString(Utility.DETAIL_IMAGE, post.getMainImageUrl());
         detailBundle.putString(Utility.DETAIL_TTITLE, post.getTitle());
         detailBundle.putString(Utility.DETAIL_TEXT, post.getText());
+        detailBundle.putInt(Utility.DETAIL_CALLING_ACTIVITY, Utility.SAVE_ACTIVITY_CALLING);
         detailIntent.putExtras(detailBundle);
         mContext.startActivity(detailIntent);
     }
