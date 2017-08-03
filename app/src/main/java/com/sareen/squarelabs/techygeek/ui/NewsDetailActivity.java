@@ -1,6 +1,7 @@
 package com.sareen.squarelabs.techygeek.ui;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -99,16 +100,25 @@ public class NewsDetailActivity extends AppCompatActivity
     {
         if(!isSaved)
         {
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(SavedPostsEntry.COLUMN_POST_ID, post_id);
-            contentValues.put(SavedPostsEntry.COLUMN_POST_TITLE, post_title);
-            contentValues.put(SavedPostsEntry.COLUMN_POST_TEXT, post_text);
-            contentValues.put(SavedPostsEntry.COLUMN_POST_TEXT, post_text);
-            contentValues.put(SavedPostsEntry.COLUMN_POST_IMAGE, post_image_url);
-            getContentResolver().insert(SavedPostsEntry.CONTENT_URI, contentValues);
-            Toast.makeText(this, "Article saved in Downloads", Toast.LENGTH_SHORT)
-                    .show();
 
+            if(isAlreadyDownloaded())
+            {
+                Toast.makeText(this, "Article already downloaded", Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+            else
+            {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(SavedPostsEntry.COLUMN_POST_ID, post_id);
+                contentValues.put(SavedPostsEntry.COLUMN_POST_TITLE, post_title);
+                contentValues.put(SavedPostsEntry.COLUMN_POST_TEXT, post_text);
+                contentValues.put(SavedPostsEntry.COLUMN_POST_TEXT, post_text);
+                contentValues.put(SavedPostsEntry.COLUMN_POST_IMAGE, post_image_url);
+                getContentResolver().insert(SavedPostsEntry.CONTENT_URI, contentValues);
+                Toast.makeText(this, "Article saved in Downloads", Toast.LENGTH_SHORT)
+                        .show();
+            }
             // toggle save flag
             isSaved = true;
             invalidateOptionsMenu();
@@ -117,7 +127,8 @@ public class NewsDetailActivity extends AppCompatActivity
         {
             // TODO:
             // Delete the post from database
-            // Close the detail activity
+            // and if the calling activity is Saved activity,
+            // then close the detail activity
             // show a snack bar in save activity with undo option of delete operation
             // Show toast of already downloaded
             deletePost();
@@ -126,6 +137,19 @@ public class NewsDetailActivity extends AppCompatActivity
             invalidateOptionsMenu();
 
         }
+    }
+
+    private boolean isAlreadyDownloaded()
+    {
+        Cursor c = getContentResolver().query
+                (SavedPostsEntry.CONTENT_URI, null, SavedPostsEntry.COLUMN_POST_ID + "=?",
+                        new String[]{post_id}, null);
+
+        if(c.getCount() == 0)
+        {
+            return false;
+        }
+        return true;
     }
 
     private void deletePost()
