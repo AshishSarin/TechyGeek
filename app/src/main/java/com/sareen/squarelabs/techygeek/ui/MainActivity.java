@@ -2,6 +2,7 @@ package com.sareen.squarelabs.techygeek.ui;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,6 +26,12 @@ public class MainActivity extends AppCompatActivity
                             .show();
                     return true;
                 case R.id.navigation_dashboard:
+                    // load the dashboard fragment
+                    NewsListFragment newsListFragment = NewsListFragment.getInstance();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .add(R.id.dashboard_content, newsListFragment)
+                            .commit();
                     Toast.makeText(MainActivity.this, "Dashboard Tab", Toast.LENGTH_SHORT)
                             .show();
                     return true;
