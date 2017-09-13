@@ -17,11 +17,6 @@
             android:name=".ui.HomeActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.NewsDetailActivity"
@@ -39,19 +34,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sareen.squarelabs.techygeek.ui.HomeActivity" />
         </activity>
-
-        <activity android:name=".ui.NewsSavedActivity"
+        <activity
+            android:name=".ui.NewsSavedActivity"
             android:label="Downloads">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.HomeActivity"/>
+                android:value=".ui.HomeActivity" />
         </activity>
 
         <provider
             android:name=".data.TechyGeekProvider"
             android:authorities="com.sareen.squarelabs.techygeek.provider" />
 
-
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
