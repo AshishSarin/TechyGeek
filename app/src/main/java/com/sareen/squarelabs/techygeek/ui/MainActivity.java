@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity
                     return true;
                 case R.id.navigation_dashboard:
                     // load the dashboard fragment
-                    NewsListFragment newsListFragment = NewsListFragment.getInstance();
+                    DashboardFragment dashboardFragment = new DashboardFragment();
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .add(R.id.dashboard_content, newsListFragment)
+                            .add(R.id.dashboard_content, dashboardFragment)
                             .commit();
                     Toast.makeText(MainActivity.this, "Dashboard Tab", Toast.LENGTH_SHORT)
                             .show();
