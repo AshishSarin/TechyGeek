@@ -9,6 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".ui.TechyGeekActivity"
             android:label="@string/title_activity_techy_geek"
@@ -20,38 +30,34 @@
         </activity>
         <activity
             android:name=".ui.NewsDetailActivity"
-            android:parentActivityName=".ui.HomeActivity" />
+            android:parentActivityName=".ui.MainActivity" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ui.HomeActivity" />
+            android:value=".ui.MainActivity" />
 
         <activity
             android:name=".ui.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".ui.HomeActivity">
+            android:parentActivityName=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sareen.squarelabs.techygeek.ui.HomeActivity" />
+                android:value="com.sareen.squarelabs.techygeek.ui.MainActivity" />
         </activity>
         <activity
             android:name=".ui.NewsSavedActivity"
             android:label="Downloads">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.HomeActivity" />
+                android:value=".ui.MainActivity" />
         </activity>
 
         <provider
             android:name=".data.TechyGeekProvider"
             android:authorities="com.sareen.squarelabs.techygeek.provider" />
 
-        <activity android:name=".ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
+
     </application>
 
 </manifest>
