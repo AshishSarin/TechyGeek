@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         BottomNavigationView navigationView = (BottomNavigationView)findViewById(R.id.home_navigation);
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        // hide bottom navigation view on scroll
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigationView.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationViewBehaviour());
     }
