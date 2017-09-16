@@ -1,5 +1,6 @@
 package com.sareen.squarelabs.techygeek.ui;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.sareen.squarelabs.techygeek.R;
@@ -24,6 +26,10 @@ public class MainActivity extends AppCompatActivity
             switch (item.getItemId())
             {
                 case R.id.navigation_home:
+                    DummyFragment fragment = new DummyFragment();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.main_content, fragment)
+                            .commit();
                     Toast.makeText(MainActivity.this, "Home Tab", Toast.LENGTH_SHORT)
                             .show();
                     return true;
@@ -32,7 +38,7 @@ public class MainActivity extends AppCompatActivity
                     DashboardFragment dashboardFragment = new DashboardFragment();
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .add(R.id.dashboard_content, dashboardFragment)
+                            .replace(R.id.main_content, dashboardFragment)
                             .commit();
                     Toast.makeText(MainActivity.this, "Dashboard Tab", Toast.LENGTH_SHORT)
                             .show();
@@ -63,5 +69,15 @@ public class MainActivity extends AppCompatActivity
         // hide bottom navigation view on scroll
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigationView.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationViewBehaviour());
+
+        findViewById(R.id.dashboard_tabLayout).setVisibility(View.GONE);
+
+        // add home fragment initiallly
+        DummyFragment fragment = new DummyFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.main_content, fragment)
+                .commit();
+        Toast.makeText(MainActivity.this, "Home Tab", Toast.LENGTH_SHORT)
+                .show();
     }
 }

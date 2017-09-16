@@ -28,6 +28,12 @@ public class DashboardPagerAdapter extends FragmentStatePagerAdapter
     }
 
     @Override
+    public CharSequence getPageTitle(int position)
+    {
+        return "Tech News";
+    }
+
+    @Override
     public int getCount()
     {
         return 3;

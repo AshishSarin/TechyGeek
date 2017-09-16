@@ -2,6 +2,7 @@ package com.sareen.squarelabs.techygeek.ui;
 
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -20,6 +21,7 @@ public class DashboardFragment extends Fragment
 
     ViewPager mDashboardPager;
     DashboardPagerAdapter mDashboardPagerAdapter;
+    TabLayout tabLayout;
 
     public DashboardFragment()
     {
@@ -36,6 +38,10 @@ public class DashboardFragment extends Fragment
         mDashboardPager = (ViewPager)rootView.findViewById(R.id.dashboard_pager);
         mDashboardPagerAdapter = new DashboardPagerAdapter(getChildFragmentManager());
         mDashboardPager.setAdapter(mDashboardPagerAdapter);
+        TabLayout tabLayout = (TabLayout)getActivity().findViewById(R.id.dashboard_tabLayout);
+        tabLayout.setVisibility(View.VISIBLE);
+        tabLayout.setupWithViewPager(mDashboardPager);
+
         return rootView;
     }
 
