@@ -2,9 +2,11 @@ package com.sareen.squarelabs.techygeek.ui;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -52,7 +54,12 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.home_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
         BottomNavigationView navigationView = (BottomNavigationView)findViewById(R.id.home_navigation);
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigationView.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationViewBehaviour());
     }
 }
