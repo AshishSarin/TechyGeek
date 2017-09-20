@@ -44,13 +44,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sareen.squarelabs.techygeek.ui.activities.MainActivity" />
         </activity>
-        <activity
-            android:name=".ui.activities.NewsSavedActivity"
-            android:label="Downloads">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.activities.MainActivity" />
-        </activity>
 
         <provider
             android:name=".data.TechyGeekProvider"

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.sareen.squarelabs.techygeek.R;
+import com.sareen.squarelabs.techygeek.ui.fragments.DownloadsFragment;
 import com.sareen.squarelabs.techygeek.utilities.BottomNavigationViewBehaviour;
 import com.sareen.squarelabs.techygeek.ui.fragments.DashboardFragment;
 
@@ -41,6 +42,12 @@ public class MainActivity extends AppCompatActivity
                             .show();
                     return true;
                 case R.id.navigation_downloads:
+                    hideTabLayout();
+                    DownloadsFragment downloadsFragment = DownloadsFragment.getInstance();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_content, downloadsFragment)
+                            .commit();
                     Toast.makeText(MainActivity.this, "Downloads Tab", Toast.LENGTH_SHORT)
                             .show();
                     return true;
@@ -67,11 +74,16 @@ public class MainActivity extends AppCompatActivity
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigationView.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationViewBehaviour());
 
-        findViewById(R.id.dashboard_tabLayout).setVisibility(View.GONE);
+        hideTabLayout();
 
         // add home fragment initiallly
 
         Toast.makeText(MainActivity.this, "Home Tab", Toast.LENGTH_SHORT)
                 .show();
+    }
+
+    public void hideTabLayout()
+    {
+        findViewById(R.id.dashboard_tabLayout).setVisibility(View.GONE);
     }
 }

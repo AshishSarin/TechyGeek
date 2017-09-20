@@ -104,8 +104,7 @@ public class TechyGeekActivity extends AppCompatActivity
         else if(id == R.id.nav_saved_news)
         {
             // Open Saved Activity
-            Intent savedIntent = new Intent(this, NewsSavedActivity.class);
-            startActivity(savedIntent);
+
         }
         else if(id == R.id.nav_home)
         {
