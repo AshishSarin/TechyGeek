@@ -26,10 +26,7 @@ public class MainActivity extends AppCompatActivity
             switch (item.getItemId())
             {
                 case R.id.navigation_home:
-                    DummyFragment fragment = new DummyFragment();
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.main_content, fragment)
-                            .commit();
+
                     Toast.makeText(MainActivity.this, "Home Tab", Toast.LENGTH_SHORT)
                             .show();
                     return true;
@@ -73,10 +70,7 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.dashboard_tabLayout).setVisibility(View.GONE);
 
         // add home fragment initiallly
-        DummyFragment fragment = new DummyFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_content, fragment)
-                .commit();
+
         Toast.makeText(MainActivity.this, "Home Tab", Toast.LENGTH_SHORT)
                 .show();
     }
