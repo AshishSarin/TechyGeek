@@ -1,4 +1,4 @@
-package com.sareen.squarelabs.techygeek.ui;
+package com.sareen.squarelabs.techygeek.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -104,8 +104,7 @@ public class TechyGeekActivity extends AppCompatActivity
         else if(id == R.id.nav_saved_news)
         {
             // Open Saved Activity
-            Intent savedIntent = new Intent(this, NewsSavedActivity.class);
-            startActivity(savedIntent);
+
         }
         else if(id == R.id.nav_home)
         {

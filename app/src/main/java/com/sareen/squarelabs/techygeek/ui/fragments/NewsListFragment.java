@@ -1,4 +1,4 @@
-package com.sareen.squarelabs.techygeek.ui;
+package com.sareen.squarelabs.techygeek.ui.fragments;
 
 
 import android.os.Bundle;

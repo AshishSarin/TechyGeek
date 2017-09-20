@@ -1,10 +1,8 @@
-package com.sareen.squarelabs.techygeek.ui;
+package com.sareen.squarelabs.techygeek.ui.activities;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +11,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.sareen.squarelabs.techygeek.R;
+import com.sareen.squarelabs.techygeek.ui.fragments.DownloadsFragment;
+import com.sareen.squarelabs.techygeek.utilities.BottomNavigationViewBehaviour;
+import com.sareen.squarelabs.techygeek.ui.fragments.DashboardFragment;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -26,10 +27,7 @@ public class MainActivity extends AppCompatActivity
             switch (item.getItemId())
             {
                 case R.id.navigation_home:
-                    DummyFragment fragment = new DummyFragment();
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.main_content, fragment)
-                            .commit();
+
                     Toast.makeText(MainActivity.this, "Home Tab", Toast.LENGTH_SHORT)
                             .show();
                     return true;
@@ -44,6 +42,12 @@ public class MainActivity extends AppCompatActivity
                             .show();
                     return true;
                 case R.id.navigation_downloads:
+                    hideTabLayout();
+                    DownloadsFragment downloadsFragment = DownloadsFragment.getInstance();
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_content, downloadsFragment)
+                            .commit();
                     Toast.makeText(MainActivity.this, "Downloads Tab", Toast.LENGTH_SHORT)
                             .show();
                     return true;
@@ -70,14 +74,16 @@ public class MainActivity extends AppCompatActivity
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigationView.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationViewBehaviour());
 
-        findViewById(R.id.dashboard_tabLayout).setVisibility(View.GONE);
+        hideTabLayout();
 
         // add home fragment initiallly
-        DummyFragment fragment = new DummyFragment();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.main_content, fragment)
-                .commit();
+
         Toast.makeText(MainActivity.this, "Home Tab", Toast.LENGTH_SHORT)
                 .show();
+    }
+
+    public void hideTabLayout()
+    {
+        findViewById(R.id.dashboard_tabLayout).setVisibility(View.GONE);
     }
 }

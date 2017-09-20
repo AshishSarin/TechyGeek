@@ -15,7 +15,7 @@ import com.google.firebase.database.Query;
 import com.sareen.squarelabs.techygeek.R;
 import com.sareen.squarelabs.techygeek.clickListeners.NewsListItemClickListener;
 import com.sareen.squarelabs.techygeek.model.Post;
-import com.sareen.squarelabs.techygeek.ui.NewsDetailActivity;
+import com.sareen.squarelabs.techygeek.ui.activities.NewsDetailActivity;
 import com.sareen.squarelabs.techygeek.utilities.Utility;
 import com.squareup.picasso.Picasso;
 

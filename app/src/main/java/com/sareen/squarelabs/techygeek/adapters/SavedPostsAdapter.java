@@ -10,13 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.sareen.squarelabs.techygeek.R;
 import com.sareen.squarelabs.techygeek.clickListeners.SaveNewsItemClickListener;
 import com.sareen.squarelabs.techygeek.data.TechyGeekContract.SavedPostsEntry;
 import com.sareen.squarelabs.techygeek.model.Post;
-import com.sareen.squarelabs.techygeek.ui.NewsDetailActivity;
+import com.sareen.squarelabs.techygeek.ui.activities.NewsDetailActivity;
 import com.sareen.squarelabs.techygeek.utilities.Utility;
 import com.squareup.picasso.Picasso;
 

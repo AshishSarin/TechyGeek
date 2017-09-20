@@ -1,4 +1,4 @@
-package com.sareen.squarelabs.techygeek.ui;
+package com.sareen.squarelabs.techygeek.utilities;
 
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;

@@ -1,4 +1,4 @@
-package com.sareen.squarelabs.techygeek.ui;
+package com.sareen.squarelabs.techygeek.ui.activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.sareen.squarelabs.techygeek.R;
+import com.sareen.squarelabs.techygeek.ui.fragments.NewsListFragment;
 
 public class HomeActivity extends TechyGeekActivity
 {

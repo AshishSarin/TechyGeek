@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.sareen.squarelabs.techygeek.ui.NewsListFragment;
+import com.sareen.squarelabs.techygeek.ui.fragments.NewsListFragment;
 
 /**
  * Created by ashish on 14/9/17.
