@@ -1,4 +1,4 @@
-package com.sareen.squarelabs.techygeek.ui;
+package com.sareen.squarelabs.techygeek.ui.activities;
 
 import android.content.ContentValues;
 import android.database.Cursor;

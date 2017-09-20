@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sareen.squarelabs.techygeek.ui.HomeActivity"
+    tools:context="com.sareen.squarelabs.techygeek.ui.activities.HomeActivity"
     android:id="@+id/home_activity_view">
 
 </FrameLayout>

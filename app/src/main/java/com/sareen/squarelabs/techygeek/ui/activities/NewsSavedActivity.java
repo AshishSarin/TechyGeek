@@ -1,4 +1,4 @@
-package com.sareen.squarelabs.techygeek.ui;
+package com.sareen.squarelabs.techygeek.ui.activities;
 
 import android.database.Cursor;
 import android.support.v4.app.LoaderManager;

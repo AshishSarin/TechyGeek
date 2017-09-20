@@ -1,10 +1,8 @@
-package com.sareen.squarelabs.techygeek.ui;
+package com.sareen.squarelabs.techygeek.ui.activities;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +11,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.sareen.squarelabs.techygeek.R;
+import com.sareen.squarelabs.techygeek.utilities.BottomNavigationViewBehaviour;
+import com.sareen.squarelabs.techygeek.ui.fragments.DashboardFragment;
 
 public class MainActivity extends AppCompatActivity
 {

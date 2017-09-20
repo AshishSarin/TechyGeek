@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,36 +20,36 @@
         </activity>
 
         <activity
-            android:name=".ui.TechyGeekActivity"
+            android:name=".ui.activities.TechyGeekActivity"
             android:label="@string/title_activity_techy_geek"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.activities.HomeActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".ui.NewsDetailActivity"
-            android:parentActivityName=".ui.MainActivity" />
+            android:name=".ui.activities.NewsDetailActivity"
+            android:parentActivityName=".ui.activities.MainActivity" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value=".ui.MainActivity" />
+            android:value=".ui.activities.MainActivity" />
 
         <activity
-            android:name=".ui.SettingsActivity"
+            android:name=".ui.activities.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".ui.MainActivity">
+            android:parentActivityName=".ui.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sareen.squarelabs.techygeek.ui.MainActivity" />
+                android:value="com.sareen.squarelabs.techygeek.ui.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".ui.NewsSavedActivity"
+            android:name=".ui.activities.NewsSavedActivity"
             android:label="Downloads">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity" />
+                android:value=".ui.activities.MainActivity" />
         </activity>
 
         <provider
