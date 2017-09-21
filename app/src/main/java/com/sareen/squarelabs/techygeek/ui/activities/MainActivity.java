@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.home_navigation);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
-        // add home fragment initiallly
+        // add home fragment initially
 
         Toast.makeText(MainActivity.this, "Home Tab", Toast.LENGTH_SHORT)
                 .show();
