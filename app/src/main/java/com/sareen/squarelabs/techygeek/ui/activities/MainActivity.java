@@ -14,6 +14,7 @@ import com.sareen.squarelabs.techygeek.R;
 import com.sareen.squarelabs.techygeek.ui.fragments.DownloadsFragment;
 import com.sareen.squarelabs.techygeek.utilities.BottomNavigationViewBehaviour;
 import com.sareen.squarelabs.techygeek.ui.fragments.DashboardFragment;
+import com.sareen.squarelabs.techygeek.utilities.BottomNavigationViewHelper;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -75,8 +76,10 @@ public class MainActivity extends AppCompatActivity
         layoutParams.setBehavior(new BottomNavigationViewBehaviour());
 
         hideTabLayout();
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.home_navigation);
+        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
 
-        // add home fragment initiallly
+        // add home fragment initially
 
         Toast.makeText(MainActivity.this, "Home Tab", Toast.LENGTH_SHORT)
                 .show();
